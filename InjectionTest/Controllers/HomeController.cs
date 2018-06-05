@@ -5,6 +5,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using InjectionTest.Models;
+using Unity.Attributes;
 
 namespace InjectionTest.Controllers
 {
@@ -12,6 +13,7 @@ namespace InjectionTest.Controllers
     {
 	    private IFirstService _firstService;
 
+		[Dependency]
 		public ISecondService SecondService { get; set; }
 
 	    public HomeController(IFirstService firstService)
