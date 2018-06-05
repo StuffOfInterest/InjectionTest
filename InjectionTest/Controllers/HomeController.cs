@@ -10,8 +10,21 @@ namespace InjectionTest.Controllers
 {
     public class HomeController : Controller
     {
+	    private IFirstService _firstService;
+
+		public ISecondService SecondService { get; set; }
+
+	    public HomeController(IFirstService firstService)
+	    {
+		    _firstService = firstService;
+	    }
+
         public IActionResult Index()
         {
+	        ViewData["CC"] = _firstService != null ? "yes" : "no";
+	        ViewData["CA"] = SecondService != null ? "yes" : "no";
+	        ViewData["SA"] = _firstService?.SecondService != null ? "yes" : "no";
+
             return View();
         }
 

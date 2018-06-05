@@ -7,6 +7,7 @@ using Microsoft.AspNetCore;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.Logging;
+using Unity.Microsoft.DependencyInjection;
 
 namespace InjectionTest
 {
@@ -19,6 +20,7 @@ namespace InjectionTest
 
         public static IWebHostBuilder CreateWebHostBuilder(string[] args) =>
             WebHost.CreateDefaultBuilder(args)
+	            .UseUnityServiceProvider()
                 .UseStartup<Startup>();
     }
 }
